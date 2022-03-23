@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using CleaningManagement.Abstractions.Dtos;
-using CleaningManagement.Abstractions.Controllers;
+using CleaningManagement.Api.Controllers;
 using CleaningManagement.Abstractions.Interfaces;
 using Moq;
 using CleaningManagement.Abstractions;

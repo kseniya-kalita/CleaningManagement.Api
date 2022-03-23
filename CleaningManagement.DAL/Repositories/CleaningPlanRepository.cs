@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CleaningManagement.Abstractions;
+using CleaningManagement.Abstractions.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CleaningManagement.Abstractions.Interfaces
+namespace CleaningManagement.DAL.Repositories
 {
     public class CleaningPlanRepository : ICleaningPlanRepository
     {

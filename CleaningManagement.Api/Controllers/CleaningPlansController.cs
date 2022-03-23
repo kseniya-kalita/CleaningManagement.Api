@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace CleaningManagement.Abstractions.Controllers
+namespace CleaningManagement.Api.Controllers
 {
     [ApiController]
     [Route("api/cleaningplans")]

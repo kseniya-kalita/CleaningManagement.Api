@@ -1,6 +1,7 @@
+using CleaningManagement.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleaningManagement.Abstractions
+namespace CleaningManagement.DAL
 {
     public class CleaningManagementDbContext : DbContext
     {

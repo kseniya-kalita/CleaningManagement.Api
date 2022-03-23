@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CleaningManagement.Abstractions
+namespace CleaningManagement.Api
 {
     public class Program
     {

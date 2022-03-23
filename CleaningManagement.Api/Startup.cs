@@ -1,11 +1,13 @@
 ﻿using CleaningManagement.Abstractions.Interfaces;
+using CleaningManagement.DAL;
+using CleaningManagement.DAL.Repositories;
 using CleaningManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleaningManagement.Abstractions
+namespace CleaningManagement.Api
 {
     public class Startup
     {
