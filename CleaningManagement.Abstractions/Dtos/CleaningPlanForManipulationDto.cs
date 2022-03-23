@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CleaningManagement.Api.Boundary.Request
+namespace CleaningManagement.Abstractions.Dtos
 {
     public class CleaningPlanForManipulationDto
     {

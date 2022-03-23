@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CleaningManagement.DAL.Repositories
+namespace CleaningManagement.Abstractions.Interfaces
 {
     public class CleaningPlanRepository : ICleaningPlanRepository
     {

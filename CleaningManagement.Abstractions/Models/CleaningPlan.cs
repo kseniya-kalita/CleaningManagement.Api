@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleaningManagement.DAL
+namespace CleaningManagement.Abstractions
 {
     public class CleaningPlan
     {

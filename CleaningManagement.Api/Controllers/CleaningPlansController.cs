@@ -1,20 +1,20 @@
-﻿using CleaningManagement.Api.Boundary.Request;
-using CleaningManagement.DAL;
-using CleaningManagement.DAL.Repositories;
+﻿using CleaningManagement.Abstractions.Interfaces;
+using CleaningManagement.Abstractions.Dtos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace CleaningManagement.Api.Controllers
+namespace CleaningManagement.Abstractions.Controllers
 {
     [ApiController]
     [Route("api/cleaningplans")]
     public class CleaningPlansController : ControllerBase
     {
-        private readonly ICleaningPlanRepository _repository;
-        public CleaningPlansController(ICleaningPlanRepository repository)
+        private readonly ICleaningManagementService _service;
+        public CleaningPlansController(ICleaningManagementService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         [HttpPost]
@@ -29,24 +29,16 @@ namespace CleaningManagement.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            CleaningPlan cleaningPlan = new CleaningPlan
-            {
-                CreationDate = DateTime.UtcNow,
-                CustomerId = cleaningPlanDto.CustomerId,
-                Description = cleaningPlanDto.Description,
-                Title = cleaningPlanDto.Title
-            };
-            await _repository.CreateAsync(cleaningPlan).ConfigureAwait(false);
-
-            return Ok(cleaningPlan);
+            var cleaningPlan = await _service.CreateAsync(cleaningPlanDto).ConfigureAwait(false);
+            
+            return new ObjectResult(cleaningPlan) { StatusCode = StatusCodes.Status201Created };
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCleaningPlansByCustomerId(int customerId)
         {
-            var plans = await _repository.GetByCustomerIdAsync(customerId).ConfigureAwait(false);
-            
-            if (plans.Count == 0)
+            var plans = await _service.GetByCustomerIdAsync(customerId).ConfigureAwait(false);
+            if (plans == null)
             {
                 return NotFound();
             }
@@ -61,18 +53,12 @@ namespace CleaningManagement.Api.Controllers
             {
                 return BadRequest();
             }
+            var updatedPlan = await _service.UpdateByIdAsync(id, cleaningPlanDto).ConfigureAwait(false);
             
-            var cleaningPlan = await _repository.GetByIdAsync(id).ConfigureAwait(false);
-            if (cleaningPlan == null)
+            if (updatedPlan == null)
             {
                 return NotFound();
             }
-
-            cleaningPlan.Title = cleaningPlanDto.Title;
-            cleaningPlan.Description = cleaningPlan.Description;
-            cleaningPlan.CustomerId = cleaningPlan.CustomerId;
-            
-            await _repository.UpdateAsync(cleaningPlan).ConfigureAwait(false);
 
             return NoContent();
         }
@@ -80,13 +66,11 @@ namespace CleaningManagement.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCleaningPlanById(Guid id)
         {
-            var cleaningPlan = await _repository.GetByIdAsync(id).ConfigureAwait(false);
-            if (cleaningPlan == null)
+            var deletedPlan = await _service.DeleteByIdAsync(id).ConfigureAwait(false);
+            if (deletedPlan == null)
             {
                 return NotFound();
             }
-
-            await _repository.DeleteAsync(cleaningPlan).ConfigureAwait(false);
 
             return NoContent();
         }

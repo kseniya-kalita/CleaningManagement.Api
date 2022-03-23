@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CleaningManagement.DAL.Repositories
+namespace CleaningManagement.Abstractions.Interfaces
 {
     public interface ICleaningPlanRepository
     {
