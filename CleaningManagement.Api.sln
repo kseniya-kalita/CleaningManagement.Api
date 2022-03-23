@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.Api", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.DAL", "CleaningManagement.DAL\CleaningManagement.DAL.csproj", "{E8FDFB08-74CD-43BC-BCC6-9278E0811EFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningManagement.Tests", "CleaningManagement.Tests\CleaningManagement.Tests.csproj", "{6EE9D1B6-1BD4-4702-8DA9-2B69CF2A48B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E8FDFB08-74CD-43BC-BCC6-9278E0811EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8FDFB08-74CD-43BC-BCC6-9278E0811EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8FDFB08-74CD-43BC-BCC6-9278E0811EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE9D1B6-1BD4-4702-8DA9-2B69CF2A48B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE9D1B6-1BD4-4702-8DA9-2B69CF2A48B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE9D1B6-1BD4-4702-8DA9-2B69CF2A48B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE9D1B6-1BD4-4702-8DA9-2B69CF2A48B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,7 +33,8 @@ namespace CleaningManagement.DAL.Repositories
         {
             return await _context
                 .CleaningPlans
-                .FirstOrDefaultAsync(p => p.Id == id).ConfigureAwait(false);
+                .FirstOrDefaultAsync(p => p.Id == id)
+                .ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(CleaningPlan cleaningPlan)

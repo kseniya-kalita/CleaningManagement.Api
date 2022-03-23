@@ -22,7 +22,11 @@ namespace CleaningManagement.Api.Controllers
         {
             if (cleaningPlanDto == null)
             {
-                return BadRequest();
+                return BadRequest("Cleaning plan model cannot be null");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
 
             CleaningPlan cleaningPlan = new CleaningPlan
@@ -42,13 +46,18 @@ namespace CleaningManagement.Api.Controllers
         {
             var plans = await _repository.GetByCustomerIdAsync(customerId).ConfigureAwait(false);
             
+            if (plans.Count == 0)
+            {
+                return NotFound();
+            }
+
             return Ok(plans);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCleaningPlan(Guid id, [FromBody] CleaningPlanForManipulationDto cleaningPlanDto)
+        public async Task<IActionResult> UpdateCleaningPlanById(Guid id, [FromBody] CleaningPlanForManipulationDto cleaningPlanDto)
         {
-            if (cleaningPlanDto == null)
+            if (cleaningPlanDto == null || !ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -65,7 +74,7 @@ namespace CleaningManagement.Api.Controllers
             
             await _repository.UpdateAsync(cleaningPlan).ConfigureAwait(false);
 
-            return Ok(cleaningPlan);
+            return NoContent();
         }
         
         [HttpDelete("{id}")]
