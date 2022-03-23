@@ -1,4 +1,5 @@
 ﻿using CleaningManagement.DAL;
+using CleaningManagement.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,7 @@ namespace CleaningManagement.Api
         {
             services.AddControllers();
             services.AddDbContext<CleaningManagementDbContext>();
+            services.AddScoped<ICleaningPlanRepository, CleaningPlanRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
